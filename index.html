@@ -10,11 +10,22 @@
 </head>
 
 <body>
+  <div id="preloader">
+    <div class="load">
+      <hr />
+      <hr />
+      <hr />
+      <hr />
+    </div>
+  </div>
   <div id="app">
-    <div class="triggers-container">
-      <div class="page trigger-3"></div>
-      <div class="page trigger-2"></div>
-      <div class="page trigger-1"></div>
+    <div class="triggers-wrapper">
+      <div id="trigger-6" class="trigger trigger-6">trigger-6</div>
+      <div id="trigger-5" class="trigger trigger-5">trigger-5</div>
+      <div id="trigger-4" class="trigger trigger-4">trigger-4</div>
+      <div id="trigger-3" class="trigger trigger-3">trigger-3</div>
+      <div id="trigger-2" class="trigger trigger-2">trigger-2</div>
+      <div id="trigger-1" class="trigger trigger-1">trigger-1</div>
     </div>
     <!-- title -->
     <div class="title">
@@ -22,57 +33,59 @@
       <p>au sommet</p>
     </div>
     <!-- scroll button -->
-      <a href="#">
-        <!-- href="index.html#page-2" -->
-        <div id="mouse-scroll">
-          <div>
-            <span class="down-arrow-1"></span>
-            <span class="down-arrow-2"></span>
-          </div>
-          <div class="mouse">
-            <div class="mouse-in"></div>
-          </div>
+    <a href="#">
+      <!-- href="index.html#page-2" -->
+      <div id="mouse-scroll">
+        <div>
+          <span class="down-arrow-1"></span>
+          <span class="down-arrow-2"></span>
         </div>
+        <div class="mouse">
+          <div class="mouse-in"></div>
+        </div>
+      </div>
+    </a>
+    <!-- center tower-->
+    <div class="center-tower">
+      <img src="./src/img/background.svg" alt="" srcset="">
+    </div>
+    <!-- left tower -->
+    <div class="tower left-tower">
+      <!-- <img src="./src/img/2021-10-Tours-Duo-109_Tour_Gauche.png"> -->
+    </div>
+    <!-- right tower -->
+    <div class="tower right-tower">
+      <!-- <img src="./src/img/2021-10-Tours-Duo-109_Tour Gauche.png"> -->
+    </div>
+    <!-- menu desktop -->
+    <div class="menu-desktop">
+      <div class="mini-map">
+        <img src="./src/img/IMG_BG.png" alt="" srcset="">
+        <!-- <div class="reveal-map"></div> -->
+        <div class="menu-title">
+          <p>PARIS</p>
+          <span>Tours DUO</span>
+        </div>
+      </div>
+      <a href="index.html#page-1" id="home-button">
+        <i class='fas fa-arrow-left'></i>
+        <span>Accueil</span>
       </a>
-      <!-- center tower-->
-      <div class="center-tower">
-        <img src="./src/img/background.svg" alt="" srcset="">
-      </div>
-      <!-- left tower -->
-      <div class="tower left-tower">
-        <!-- <img src="./src/img/2021-10-Tours-Duo-109_Tour_Gauche.png"> -->
-      </div>
-      <!-- right tower -->
-      <div class="tower right-tower">
-        <!-- <img src="./src/img/2021-10-Tours-Duo-109_Tour Gauche.png"> -->
-      </div>
-      <!-- menu desktop -->
-      <div class="menu-desktop">
-        <div class="mini-map">
-          <img src="./src/img/IMG_BG.png" alt="" srcset="">
-          <!-- <div class="reveal-map"></div> -->
-          <div class="menu-title">
-            <p>PARIS</p>
-            <span>Tours DUO</span>
-          </div>
-        </div>
-        <a href="index.html#page-1" id="home-button">
-          <i class='fas fa-arrow-left'></i>
-          <span>Accueil</span>
-        </a>
-      </div>
-      </div>
+    </div>
+    </div>
 
 
-  <script type="module" src="/main.js"></script>
+  <script type="module" src="/main.js">
+  </script>
   <script>
     // Scroll all the way down to 1st page
-    // window.scrollTo(0, document.body.scrollHeight);
-    function scrollToBottom() {
+              const preloader = document.getElementById("preloader")
+              window.onload = function () {
       window.scrollTo(0, document.body.scrollHeight);
-    }
-    history.scrollRestoration = "manual";
-    window.onload = scrollToBottom;
+              setTimeout(() => {
+                preloader.style.display = "none";
+              }, 750);
+            };
   </script>
 </body>
 

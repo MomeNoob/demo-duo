@@ -7,44 +7,76 @@ gsap.registerPlugin(ScrollTrigger);
 
 var scallUpTowers = gsap.to(".tower", {
   scrollTrigger: {
-    trigger: ".tower",
-    toggleActions: "play pause reverse pause",
+    trigger: ".trigger-2",
+    start: "bottom center",
+    end: "bottom center",
+    markers: true,
+    toggleActions: "reverse reverse restart play",
+    // toggleActions: "restart resume reverse reset",
+    onUpdate: (self) => console.log("direction:", self.direction),
   },
-  width: 1600,
-  height: 1600,
-  y: 100,
-  duration: 0.8,
-  ease: "power3.inout",
-  paused: true,
-});
-var hideTitle = gsap.to(".title", {
-  opacity: 0,
-  duration: 0.5,
-  ease: "power1.inout",
-  paused: true,
-});
-var centerTower = gsap.to(".center-tower", {
-  opacity: 0,
-  y: 200,
-  duration: 0.8,
-  ease: "power1.inout",
+  scale: 2,
+  y: -500,
+  duration: 0.4,
   paused: true,
 });
 
-var hideMouseScroll = gsap.to("#mouse-scroll", {
+var hideTitle = gsap.to(".title", {
+  scrollTrigger: {
+    trigger: ".trigger-2",
+    start: "bottom center",
+    end: "bottom center",
+    markers: true,
+    toggleActions: "reverse reverse restart play",
+  },
+  opacity: 0,
+  duration: 0.5,
+  paused: true,
+});
+var centerTower = gsap.to(".center-tower", {
+  scrollTrigger: {
+    trigger: ".trigger-2",
+    start: "bottom center",
+    end: "bottom center",
+    markers: true,
+    toggleActions: "reverse reverse restart play",
+  },
+  opacity: 0,
+  y: 200,
+  duration: 0.4,
+  paused: true,
+});
+
+var MouseScroll = gsap.to("#mouse-scroll", {
+  scrollTrigger: {
+    trigger: ".trigger-2",
+    start: "bottom center",
+    end: "bottom center",
+    markers: true,
+    toggleActions: "reverse reverse restart play",
+  },
   opacity: 0,
   display: "none",
   duration: 0.3,
-  ease: "power1.inout",
+  onComplete: () =>
+    document
+      .querySelector("#trigger-2")
+      .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" }),
   paused: true,
 });
 
 var toggleMenu = gsap.to(".menu-desktop", {
+  scrollTrigger: {
+    trigger: ".trigger-2",
+    start: "bottom center",
+    end: "bottom center",
+    markers: true,
+    toggleActions: "reverse reverse restart play",
+  },
   opacity: 1,
   x: 0,
   duration: 0.6,
   delay: 0.1,
-  ease: "power1.inout",
   paused: true,
 });
 
@@ -53,27 +85,86 @@ document.querySelector("#mouse-scroll").onclick = (e) => {
   scallUpTowers.play();
   centerTower.play();
   hideTitle.play();
-  hideMouseScroll.play();
+  MouseScroll.play();
   toggleMenu.play();
 };
 document.querySelector("#home-button").onclick = (e) => {
   e.preventDefault();
   toggleMenu.reverse();
-  hideMouseScroll.reverse();
+  MouseScroll.reverse();
   hideTitle.reverse();
   centerTower.reverse();
   scallUpTowers.reverse();
-  setTimeout(() => {
-    // window.scrollTo(0, document.body.scrollHeight);
-  }, 1000);
+  document
+    .querySelector("#trigger-1")
+    .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" }),
+    setTimeout(() => {}, 1000);
 };
 
+//document.addEventListener("scroll", function (e) {
+//  let lastKnownScrollPosition = window.scrollY;
+//  console.log(lastKnownScrollPosition);
+//});
 
+// ------------------
+// scroll handlling
+// ------------------
 
-document.addEventListener("scroll", function (e) {
-  let lastKnownScrollPosition = window.scrollY;
-  console.log(lastKnownScrollPosition);
+let panels = gsap.utils.toArray(".triggers"),
+  scrollTween;
+
+function goToSection(i) {
+  scrollTween = gsap.to(window, {
+    scrollTo: { y: i * innerHeight, autoKill: false },
+    duration: 0.1,
+    onComplete: () => (scrollTween = null),
+    overwrite: true,
+  });
+}
+
+panels.forEach((panel, i) => {
+  ScrollTrigger.create({
+    trigger: panel,
+    start: "top bottom",
+    end: "+=200%",
+    onToggle: (self) => self.isActive && !scrollTween && goToSection(i),
+  });
 });
+
+// just in case the user forces the scroll to an inbetween spot (like a momentum scroll on a Mac that ends AFTER the scrollTo tween finishes):
+ScrollTrigger.create({
+  start: 0,
+  end: "max",
+  snap: 1 / 5,
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // gsap.registerPlugin(ScrollTrigger);
 // let speed = 100;
