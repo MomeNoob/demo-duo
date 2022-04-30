@@ -44,7 +44,7 @@ body {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 600vh;
+  height: 200vh;
   }
   
   .triggers-wrapper::-webkit-scrollbar {
@@ -52,20 +52,25 @@ body {
   }
   
   .triggers-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  overflow-y: scroll;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* display: flex;
+        flex-direction: column;
   scroll-snap-type: y mandatory;
+  overflow-x: scroll;
+  display: flex;
+  */
   -ms-overflow-style: none;
   scrollbar-width: none;
-  }
+}
+
 .trigger {
+  flex: none;
   width: 100%;
   height: 100vh;
-  scroll-snap-align: start;
+  /* scroll-snap-align: start; */
 }
 
 .trigger-1 {
@@ -73,7 +78,8 @@ body {
 }
 
 .trigger-2 {
-  background-color: blue;
+  background-color: var(--color-secondaire-1);
+  /* background-color: blue; */
 }
 
 .trigger-3 {
@@ -91,6 +97,7 @@ body {
 .trigger-6 {
   background-color: rgb(108, 190, 108);
 }
+
 .title {
   width: fit-content;
   height: 100vh;
@@ -120,10 +127,13 @@ a {
 /* images styling */
 
 .center-tower {
-  width: fit-content;
+  width: 100%;
   position: fixed;
   bottom: -720px;
   left: 50%;
+  display: flex;
+  justify-content: center;
+  -ms-transform: translate(-50%);
   transform: translateX(-50%);
   /* border: 1px solid blue; */
 }
@@ -406,6 +416,7 @@ a {
     opacity: 1;
   }
 }
+
 /* Preloader */
 #preloader {
   background: var(--color-secondaire-1);

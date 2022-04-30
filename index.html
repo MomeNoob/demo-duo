@@ -20,12 +20,12 @@
   </div>
   <div id="app">
     <div class="triggers-wrapper">
-      <div id="trigger-6" class="trigger trigger-6">trigger-6</div>
+      <section id="trigger-1" class="trigger trigger-1"></section>
+      <section id="trigger-2" class="trigger trigger-2"></section>
+      <!-- <div id="trigger-3" class="trigger trigger-3">trigger-3</div>
+                                                                  <div id="trigger-4" class="trigger trigger-4">trigger-4</div>
       <div id="trigger-5" class="trigger trigger-5">trigger-5</div>
-      <div id="trigger-4" class="trigger trigger-4">trigger-4</div>
-      <div id="trigger-3" class="trigger trigger-3">trigger-3</div>
-      <div id="trigger-2" class="trigger trigger-2">trigger-2</div>
-      <div id="trigger-1" class="trigger trigger-1">trigger-1</div>
+      <div id="trigger-6" class="trigger trigger-6">trigger-6</div> -->
     </div>
     <!-- title -->
     <div class="title">
@@ -70,7 +70,7 @@
         <span>Accueil</span>
       </a>
     </div>
-    </div>
+  </div>
 
 
   <script type="module" src="/main.js">
@@ -79,7 +79,7 @@
     // Scroll all the way down to 1st page
               const preloader = document.getElementById("preloader")
               window.onload = function () {
-      window.scrollTo(0, document.body.scrollHeight);
+                window.scrollTo(0, 0);
               setTimeout(() => {
                 preloader.style.display = "none";
               }, 750);
