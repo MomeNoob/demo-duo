@@ -8,14 +8,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // PanelSnap Setup
   let panelSnapInstance = new PanelSnap({
     panelSelector: "> #app > .triggers-wrapper > section",
-    directionThreshold: 40,
+    directionThreshold: 50,
     duration: 200,
   });
 
   // GSAP Setup
   gsap.registerPlugin(ScrollTrigger);
 
-  var scallUpTowers = gsap.to(".tower", {
+  var toggleTowersScall = gsap.to(".tower", {
     scrollTrigger: {
       trigger: ".trigger-2",
       start: "top bottom",
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // markers: true,
       toggleActions: "restart resume reverse reverse",
       // toggleActions: "restart resume reverse reset",
-      onUpdate: (self) => console.log("direction:", self.direction),
+      // onUpdate: (self) => console.log("direction:", self.direction),
     },
     scale: 2,
     y: -500,
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     paused: true,
   });
 
-  var hideTitle = gsap.to(".title", {
+  var toggleTitle = gsap.to(".title", {
     scrollTrigger: {
       trigger: ".trigger-2",
       start: "top bottom",
@@ -43,7 +43,20 @@ document.addEventListener("DOMContentLoaded", function () {
     duration: 0.5,
     paused: true,
   });
-  var centerTower = gsap.to(".center-tower", {
+  var toggleDescription = gsap.to(".description", {
+    scrollTrigger: {
+      trigger: ".trigger-2",
+      start: "top bottom",
+      end: "top center",
+      // markers: true,
+      toggleActions: "restart resume reverse reverse",
+    },
+    opacity: 0,
+    x: 100,
+    duration: 0.2,
+    paused: true,
+  });
+  var togglecenterTower = gsap.to(".center-tower", {
     scrollTrigger: {
       trigger: ".trigger-2",
       start: "top bottom",
@@ -57,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     paused: true,
   });
 
-  var MouseScroll = gsap.to("#mouse-scroll", {
+  var toggleMouseScroll = gsap.to("#mouse-scroll", {
     scrollTrigger: {
       trigger: ".trigger-2",
       start: "top bottom",
@@ -77,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     paused: true,
   });
 
-  var toggleMenu = gsap.to(".menu-desktop", {
+  var toggleDesktopMenu = gsap.to(".menu-desktop", {
     scrollTrigger: {
       trigger: ".trigger-2",
       start: "top bottom",
@@ -94,22 +107,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelector("#mouse-scroll").onclick = (e) => {
     e.preventDefault();
-    // scallUpTowers.play();
-    // centerTower.play();
-    // hideTitle.play();
-    // MouseScroll.play();
-    // toggleMenu.play();
     document
       .querySelector("#trigger-2")
       .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
   };
   document.querySelector("#home-button").onclick = (e) => {
     e.preventDefault();
-    // toggleMenu.reverse();
-    // MouseScroll.reverse();
-    // hideTitle.reverse();
-    // centerTower.reverse();
-    // scallUpTowers.reverse();
     document
       .querySelector("#trigger-1")
       .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });

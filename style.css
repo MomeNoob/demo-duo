@@ -1,12 +1,20 @@
-/* @font-face {
+@font-face {
   font-family: Segoe UI;
   src:
     local("Segoe UI"),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2) format("woff2"),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff) format("woff"),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf) format("truetype");
-  font-weight: 400;
-} */
+    url(./src/font/Segoe-UI.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    }
+    
+    @font-face {
+      font-family: Segoe UI;
+      src:
+        local("Vinci serif"),
+        url(./src/font/VinciSerif-Black.ttf) format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
 :root {
   --color-principale-1: #004489;
   --color-principale-2: #E20025;
@@ -119,9 +127,27 @@ body {
   font-size: 45px;
   margin-left: 65px;
 }
+.description {
+  width: 560px;
+  height: 100vh;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  padding-top: 40px;
+  padding-right: 40px;
+  color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: right;
+  /* border: 1px solid blue; */
+}
 
-a {
-  text-decoration: none;
+.description a {
+  color: var(--color-principale-2);
+  font-weight: 700;
+  /* text-decoration: none; */
 }
 
 /* images styling */
@@ -238,6 +264,7 @@ a {
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
   /* border: 1px solid blue; */
 }
 
@@ -303,7 +330,9 @@ a {
   -webkit-transform: translateX(-50%);
   z-index: 9999;
 }
-
+.mouse-scroll {
+  text-decoration: none;
+}
 #mouse-scroll span {
   display: block;
   width: 6px;
